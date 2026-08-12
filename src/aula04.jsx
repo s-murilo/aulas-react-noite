@@ -10,6 +10,10 @@ class Aula04 extends Component {
             source={require('../assets/icon.png')}
             style={ styles.icon }
         />
+        <Image 
+            source={{uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyDhfHLq3V3WHiFV1MDKmG3Un76Ue_lDQtvUoCYzIHfQ&s'}}
+            style={ styles.icon }
+        />
 
       </View>
     );
@@ -24,4 +28,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+
+  icon: {
+    width: 150,
+    height: 150,
+  }
+
 });
