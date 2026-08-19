@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { View, 
+import { Checkbox } from 'expo-checkbox';
+import { 
+    View, 
     Text, 
     StyleSheet, 
     TextInput, 
@@ -8,12 +10,25 @@ import { View,
 } from 'react-native';
 
 class Aula05 extends Component {
+
+  //Construtor - Forma tradicional de inicializar estado (dados)
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      nome: '',
+      email: '',
+      lembrarSenha: false
+    };
+  }
+
   render() {
     return (
       <View style={styles.container}>
 
         <View>
 
+            <Text style={ styles.login }>LOGIN</Text>
             <Image 
                 source={ require('../img/logo-barao.png') }
                 style={ styles.logo }
@@ -29,6 +44,18 @@ class Aula05 extends Component {
                 style={ styles.input }
                 placeholder='Informe seu e-mail:'
             />
+
+            <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
+              <View style={{ flex: 1, flexDirection: 'row'}}>
+                <Checkbox
+                  value={ this.state.lembrarSenha }
+                  onValueChange={ (valor) => this.setState({ lembrarSenha: valor })}
+                  color={ this.state.lembrarSenha ? '#4630eb': undefined}
+                />
+                <Text style={{ color: 'white', marginLeft: 3, fontSize: 12 }}>Lembrar senha</Text>
+              </View>
+              <Text style={{ color: '#80ef80', fontSize: 12}}>Esqueceu a senha?</Text>
+            </View>
 
             <TouchableOpacity style={ styles.botao}>
                 <Text style={ styles.textoBotao }>Entrar</Text>
@@ -72,10 +99,19 @@ const styles = StyleSheet.create({
   },
 
   logo: {
-    width: 120,
-    height: 120,
+    width: 125,
+    height: 125,
     alignSelf: 'center',
-    marginBottom: 70,
+    marginBottom: 20,
+    marginTop: 15,
+  },
+
+  login: {
+    color: '#12b434', 
+    fontSize: 45, 
+    textAlign: 'center', 
+    fontFamily: 'Times New Roman',
+    fontWeight: 'bold',
   },
 
   botao: {
@@ -83,12 +119,28 @@ const styles = StyleSheet.create({
     width: 250,
     padding: 10,
     borderRadius: 5,
-    marginTop: 30,
+    marginTop: 25,
   },
 
   textoBotao: {
     color: 'white',
+    fontSize: 17,
     textAlign: 'center',
+  },
+
+  texto1: {
+    color: 'white',
+    marginRight: 20,
+    fontSize: 15,
+    marginTop: 6,
+    textAlign: 'center',
+  },
+
+  texto2: {
+    color: '#80ef80',
+    //marginRight: 20,
+    fontSize: 15,
+    marginLeft: 10,
   },
 
 });
